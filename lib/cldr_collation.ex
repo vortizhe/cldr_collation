@@ -15,7 +15,21 @@ defmodule Cldr.Collation do
   @type comparison :: :lt | :eq | :gt
 
   def init do
-    so_path = :code.priv_dir(:ex_cldr_collation) ++ '/ucol'
+    so_path = case :code.priv_dir(:ex_cldr_collation) do
+      {:error, :bad_name} ->
+        # This happens on initial compilation
+        Mix.Tasks.Compile.Erlang.manifests()
+        |> List.first()
+        |> Path.dirname()
+        |> String.trim_trailing(".mix")
+        |> Path.join("priv")
+
+      path ->
+        path
+        |> List.to_string()
+    end
+
+    so_path = Path.join(so_path, "/ucol")
     num_scheds = :erlang.system_info(:schedulers)
     :ok = :erlang.load_nif(so_path, num_scheds)
   end
