@@ -5,11 +5,11 @@ defmodule CldrCollation.MixProject do
 
   def project do
     [
-      app: :ex_cldr_collation,
+      app: :ex_cldr_collation_test,
       version: @version,
-      name: "Cldr Collation",
+      name: "Cldr Collation test",
       docs: docs(),
-      source_url: "https://github.com/elixir-cldr/cldr_collation",
+      source_url: "https://github.com/vortizhe/cldr_collation",
       elixir: "~> 1.10",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -70,7 +70,7 @@ defmodule CldrCollation.MixProject do
     %{
       "GitHub" => "https://github.com/kipcole9/cldr_collation",
       "Readme" => "https://github.com/kipcole9/cldr_collation/blob/v#{@version}/README.md",
-      "Changelog" => "https://github.com/kipcole9/cldr_collation/blob/v#{@version}/CHANGELOG.md",
+      "Changelog" => "https://github.com/kipcole9/cldr_collation/blob/v#{@version}/CHANGELOG.md"
     }
   end
 
